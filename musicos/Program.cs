@@ -1,5 +1,6 @@
 ﻿ 
  abstract class musico // abstract 
+ /* refactorizacion*/
 {
 
     public string? Nombre {get;set;}
@@ -7,7 +8,7 @@
 
     public musico (string nombre){ Nombre=nombre ; }
 
-     public void saluda(){ Console.WriteLine($" hola soy {Nombre} ");}
+     public virtual string getsaluda() => "hola soy" + Nombre ;
 
     public  abstract /*virtual*/ void toca();// no  van a tener implementacion debido a ser muy general. y se delegan de forma obligatoria
     /* deben estar en clases clases abstractaspara existir .*/
@@ -27,9 +28,9 @@ class baterista:musico
    public baterista ( string Nombre , string bateria):base(Nombre)=> Bateria=bateria;
    public override /*new*/ void toca() /*override*/
   {
-    Console.WriteLine($"{Nombre} tocando su {Bateria }");
+    Console.WriteLine($"hola soy {Nombre} tocando su {Bateria }");
   }
-    
+    public virtual string getsaluda()=> 
 }
 class bajista:musico
 {
@@ -41,6 +42,9 @@ class bajista:musico
   {
     Console.WriteLine($"{Nombre} tocando su { Bajo }");
   }
+    public virtual string Getsaludo() =>  " hola soy "+ Nombre;/*override*/ /*saluda()*/
+  /*  public void saluda(); { console.writeline($"hola soy {nombre{ {; */
+
   
 }
 
@@ -52,7 +56,7 @@ class bajista:musico
         //musico.gustavocerati = new musico ("Gustavo Cerati");
          /* se pueden tener crear listas de clases abstractas pero no objetos */
         List<musico> sodaestereo= new List<musico>();
-        sodaestereo.Add(new musico("gustavo cerati"));
+        /*sodaestereo.Add(new musico("gustavo cerati"));*/
         sodaestereo.Add(new bajista("zeta","musicam"));
         sodaestereo.Add(new baterista("charlie","yamaha"));
 
